@@ -45,6 +45,10 @@ PC-AとPC-Bでチャット -> P2P通信でサーバーを介さない
 - ② ①でオンライン判定された相手に対しこちらからping
 - ③ ②の結果でオンラインの真偽を判定
 
+## 参考文献
+RustP2PChat
+https://github.com/cschladetsch/RustP2PChat
+
 
 
 
