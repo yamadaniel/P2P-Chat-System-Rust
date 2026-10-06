@@ -49,7 +49,11 @@ PC-AとPC-Bでチャット -> P2P通信でサーバーを介さない
 RustP2PChat
 https://github.com/cschladetsch/RustP2PChat
 
+Rust と Web でつくる軽量デスクトップアプリ：Tauri 完全ガイド
+https://qiita.com/automation2025/items/c2e5d77c08c37532a3a3
+
+Rust製P2Pネットワーキングライブラリ「Iroh」を徹底解説する
+https://zenn.dev/nonejp/articles/4f3fa837bcbb96
 
 
-
-最終更新日 2026/10/06 15:05
+最終更新日 2026/10/06 15:28
