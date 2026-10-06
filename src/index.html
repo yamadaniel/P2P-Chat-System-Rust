@@ -9,31 +9,38 @@
   </head>
 
   <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
+      <header>
+        <a href="index.html"><img src="assets/error.jpg" height="60" alt="ホーム"></a>
+        <p id="greet-msg"></p>
+      </header>
 
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
-      </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
+      <main>
+        <section id="new_account">
+          <a href="new_account.html" style="text-align: left;">
+            <p>ユーザー登録</p>
+          </a>
+        </section>
 
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
+        <section id="chat">
+          <a href="chat.html" style="text-align: center;">
+            <p>チャット</p>
+          </a>
+        </section>
+
+        <section id="settings">
+          <a href="settings.html" style="text-align: right;">
+            <p>設定</p>
+          </a>
+        </section>
+
+      </main>
+
+      
+
+
+
+
+
     </main>
   </body>
 </html>
