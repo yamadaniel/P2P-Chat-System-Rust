@@ -1,7 +1,32 @@
-# Tauri + Vanilla
+# P2P通信を使用したチャットアプリ
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
+## 使用言語
+Rust(Tauri), HTML, CSS, JavaScript
 
-## Recommended IDE Setup
+## 使用技術
+Rust、SQLite, iroh
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## 概要
+チャットの際に中央サーバーを経由せずにP2P(Peer-to-Peer)で通信を行うシステム
+中央サーバーは以下の際に利用される
+-新規登録
+-ログイン
+-ユーザー検索
+-オンライン表示
+それら以外で中央サーバーは使わない
+
+## 目的
+-P2P通信を利用した中央サーバーに依存しないサービスの作成
+-メッセージ本文がサーバーを通らず、どこにも保存されない
+-最悪の場合、中央サーバーがダウンしてもチャットを行うことはできる
+
+## 現状の疑問・課題
+-ポート開放なしでインターネット間での通信ができるか
+ -> irohでは可能らしいが、不可の場合はirohのリレーを使用（要検証）
+-本当に中央サーバー無しでも通信が可能なのか
+-OracleAlwaysFree以外にサーバーはないのか
+
+
+
+
+最終更新日 2026/10/06 14:25
