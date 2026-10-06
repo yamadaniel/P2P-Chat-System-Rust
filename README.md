@@ -1,18 +1,25 @@
 # P2P通信を使用したチャットアプリ
 
 ## 使用言語
-Rust(Tauri), HTML, CSS, JavaScript
+- Rust(Tauri)
+- HTML
+- CSS
+- JavaScript
 
 ## 使用技術
-Rust、SQLite, iroh
+- Rust
+- SQLite
+- iroh
 
 ## 概要
 チャットの際に中央サーバーを経由せずにP2P(Peer-to-Peer)で通信を行うシステム
+
 中央サーバーは以下の際に利用される
 - 新規登録
 - ログイン
 - ユーザー検索
 - オンライン表示
+
 それら以外で中央サーバーは使わない
 
 ## 目的
