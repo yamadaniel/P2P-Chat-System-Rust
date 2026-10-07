@@ -16,3 +16,12 @@ window.addEventListener("DOMContentLoaded", () => {
     greet();
   });
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+  greetInputEl = document.querySelector("#msg-input");
+  greetMsgEl = document.querySelector("#msg-output");
+  document.querySelector("#greet-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    send_msg();
+  });
+});
