@@ -1,4 +1,5 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+use std::collections::BTreeSet;
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
@@ -11,4 +12,9 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![greet])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+}
+
+pub struct EndpointAddr<TransportAddr> {
+    // pub id: PublicKey,                  // Ed25519公開鍵(NodeID)
+    pub addrs: BTreeSet<TransportAddr>, // 直接アドレス(任意)
 }
