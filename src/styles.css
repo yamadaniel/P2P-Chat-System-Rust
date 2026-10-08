@@ -1,3 +1,13 @@
+main {
+  display: flex;
+  gap: 20px;
+}
+
+#new_account, #chat, #settings {
+  flex: 1;
+  text-align: center;
+}
+
 main p {
   white-space: nowrap;
 }
@@ -8,3 +18,25 @@ a {
   color: inherit;
 }
 
+.lbutton {
+  background-color: #cab64a;
+}
+
+input {
+  font-style: normal;
+  background-color: #FEFEF9;
+}
+
+body {
+  background-color: #FAFAF8;
+}
+
+header {
+  display: flex;
+  gap: 20px;
+}
+
+.login {
+  flex: 1;
+  text-align: right;
+}

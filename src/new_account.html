@@ -15,7 +15,44 @@
       </header>
 
       <main>
+        <p>新規登録</p>
+        <!-- <p id="small">別端末の場合は新しいアカウントを作成することを推奨します</p> -->
+        <br>
+        
+        <form action="" method="">
 
+          <div id="mail">
+            <p>メールアドレス</p>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <br>
+
+          <div id="passwd">
+            <p>パスワード</p>
+            <input type="password" id="password" name="password" minlength="8" autocomplete="new-password" required>
+          </div>
+          
+          <br>
+
+          <div id="birth">
+            <p>誕生日</p>
+            <input type="date" id="date" name="date" required>
+          </div>
+
+          <br>
+
+          <div id="userId">
+            <p>ユーザーID</p>
+            <p id="small">このIDは以後変更できません</p>
+            <input type="text" id="user_id" name="user_id" minlength="5" required>
+          </div>
+
+          <br>
+
+          <input type="submit" class="lbutton" value="登録">
+
+        </form> 
         
       </main>
 
