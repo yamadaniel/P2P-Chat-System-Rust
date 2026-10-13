@@ -41,6 +41,18 @@ header {
   text-align: right;
 }
 
+
 #small {
   color: gray;
+}
+
+#chat-place {
+  display: flex;
+  gap: 100px;
+}
+
+#user_chat {
+  display: flex;
+  gap: 100px;
+
 }

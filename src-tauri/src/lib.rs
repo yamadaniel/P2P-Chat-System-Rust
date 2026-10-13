@@ -23,5 +23,5 @@ pub struct EndpointAddr<TransportAddr> {
 
 #[tauri::command]
 fn logged() -> String {
-    format!("Welcome! mypage")
+    format!("絶対助ける！")
 }
