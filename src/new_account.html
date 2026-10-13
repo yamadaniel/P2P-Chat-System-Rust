@@ -23,21 +23,25 @@
 
           <div id="mail">
             <p>メールアドレス</p>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" 
+            placeholder="example@example.com" required>
           </div>
 
           <br>
 
           <div id="passwd">
             <p>パスワード</p>
-            <input type="password" id="password" name="password" minlength="8" autocomplete="new-password" required>
+            <input type="password" id="password" name="password" minlength="8" 
+            autocomplete="new-password" placeholder="パスワードは8ケタ以上で設定してください" 
+             required>
           </div>
           
           <br>
 
           <div id="birth">
             <p>誕生日</p>
-            <input type="date" id="date" name="date" required>
+            <input type="date" id="date" name="date" 
+            min="1950-01-01" max="3000-12-31" required>
           </div>
 
           <br>
@@ -45,6 +49,7 @@
           <div id="userId">
             <p>ユーザーID</p>
             <p id="small">このIDは以後変更できません</p>
+            <p id="small">使用済みのユーザーIDは使用できません</p>
             <input type="text" id="user_id" name="user_id" minlength="5" required>
           </div>
 

@@ -56,3 +56,8 @@ header {
   gap: 100px;
 
 }
+
+input[type="email"] { width: 20em; }
+input[type="text"] { width: 20em; }
+input[type="password"] { width: 20em; }
+input[type="date"] { width: 20em; }

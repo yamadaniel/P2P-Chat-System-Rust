@@ -47,6 +47,7 @@ PC-AとPC-Bでチャット -> P2P通信でサーバーを介さない
 
 ## 参考文献
 RustP2PChat
+
 https://github.com/cschladetsch/RustP2PChat
 
 Rust と Web でつくる軽量デスクトップアプリ：Tauri 完全ガイド
