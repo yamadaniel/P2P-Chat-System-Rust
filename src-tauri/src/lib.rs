@@ -11,6 +11,7 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![logged])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
@@ -18,4 +19,9 @@ pub fn run() {
 pub struct EndpointAddr<TransportAddr> {
     // pub id: PublicKey,                  // Ed25519公開鍵(NodeID)
     pub addrs: BTreeSet<TransportAddr>, // 直接アドレス(任意)
+}
+
+#[tauri::command]
+fn logged() -> String {
+    format!("Welcome! mypage")
 }
