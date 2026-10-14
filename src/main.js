@@ -10,19 +10,35 @@ async function greet() {
 }
 
 async function checkLogin() {
-  if (isLogin) {
-    console.log("ログイン済みです: mypage.html");
-    returnMsgEl.textContent = await invoke("logged");
+  const msgEl = document.querySelector("#logged-msg");
 
-  } else {
-    console.log("未ログインです: login.html");
+  if(!msgEl) {
+    console.error("エラー: #logged-msgが見つかりません");
+    return;
+  }
+
+  try {
+    const result = await invoke("logged");
+
+    msgEl.textContent = result;
+    console.log("ログイン状態: ", result);
+
+  } catch(error) {
+    console.error("コマンド実行失敗: ", error);
+    msgEl.textContent = "エラーが発生しました";
   }
   
 };
 
+/*
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#loginBtn").addEventListener("click", checkLogin);
   returnMsgEl = document.querySelector("#logged-msg");
 
 })
 
+*/
+
+document.addEventListener('DOMContentLoaded',() => {
+  checkLogin();
+});
