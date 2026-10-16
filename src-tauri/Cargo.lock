@@ -3546,6 +3546,7 @@ dependencies = [
 name = "p2p-chat-system-rust"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "iroh",
  "serde",
  "serde_json",

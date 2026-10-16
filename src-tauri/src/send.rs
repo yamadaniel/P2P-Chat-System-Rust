@@ -1,16 +1,16 @@
-use iroh::{Endpoint, EndpointAddr, endpoint::presents};
+use iroh::{Endpoint, EndpointId, endpoint::presets};
 
 const ALPN: &[u8] = b"iroh-example/echo/0";
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     // 接続先のアドレスを引数から取得
-    let addr: EndpointAddr = std::env::args().nth(1)
+    let addr: EndpointId = std::env::args().nth(1)
     .expect("Usage: client <addr>")
     .parse()?;
 
     // エンドポイントを作成してバインド
-    let endpoint = Endpoint::bind(presents::N0).await?;
+    let endpoint = Endpoint::bind(presets::N0).await?;
 
     // 接続先に接続(ALPN指定)
     let conn = endpoint.connect(addr, ALPN).await?;
@@ -28,6 +28,6 @@ async fn main() -> anyhow::Result<()> {
 
     // 接続を閉じる
     conn.close(0u32.into(), b"bye!");
-    endpoint.close().await();
+    endpoint.close().await;
     Ok(())
 }
