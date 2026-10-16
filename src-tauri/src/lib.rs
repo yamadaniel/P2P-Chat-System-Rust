@@ -1,5 +1,6 @@
-mod serve;
-mod send;
+mod p2p;
+
+use tauri::Manager;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use std::collections::BTreeSet;
@@ -13,6 +14,13 @@ fn greet(name: &str) -> String {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .setup(|app| {
+            let handle = app.handle().clone();
+            let p2p = tauri::async_runtime::block_on(p2p::start(handle))?;
+            app.manage(p2p);
+            Ok(())
+        })
+
         .invoke_handler(tauri::generate_handler![greet, logged])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -28,4 +36,8 @@ pub struct EndpointAddr<TransportAddr> {
 #[tauri::command]
 fn logged() -> String {
     format!("絶対助ける！")
+}
+
+pub fn setup() {
+
 }
