@@ -56,3 +56,91 @@ $(document).ready(function() {//htmlの描画が終わったら、処理を実�
         //jQueryのappend関数を使って、your_containerの直下にhtml要素を書き加える
         $('#your_container').append(chatDom.join(''));
 });
+
+// ========== P2P送受信 ==========
+
+const { invoke } = window.__TAURI__.core;
+const { listen } = window.__TAURI__.event;
+
+// 送信中に二重送信しないためのフラグ
+let sending = false;
+
+// 吹き出しを1つ追加する
+function addMessage(text, isMine) {
+    const messages = document.querySelector('#bms_messages');
+
+    const message = document.createElement("div")
+    message.className = "bms_message " + (isMine ? "bms_right" : "bms_left");
+
+    const box = document.createElement("div");
+    box.className = "bms_message_box";
+
+    const textEl = document.createElement("div");
+    textEl.className = "bms_message_text";
+    // textContentで入れる（相手の本文をHTMLとして解釈させない）
+    textEl.textContent = text;
+
+    content.appendChild(textEl);
+    box.appendChild(content);
+    message.appendChild(box);
+    
+    const clear = document.createElement
+    clear.className = "bms_clear";
+
+    messages.appendChild(message);
+    messages.appendChild(clear);
+
+    // 一番下までスクロール
+    messages.scrollTop
+}
+
+// 送信ボタン or Enterで呼ばれる
+async function sendMEssage() {
+    if (sending) return;
+
+    const textarea = document.querySelector("#bms_send_message");
+    const partnerId = document.querySelector("#partner_id").value.trim();
+
+    if (!partnerId) {
+        alert("相手のIDを入力してください");
+        return;
+    }
+    if (!text) return;
+
+    sending = true;
+    try {
+        // Rustのsend_messageを呼ぶ。相手からACKが帰るまで待つ
+        await invoke("send_message", {to: partnerId, text: text});
+        addMessage(text, true);
+        textarea.value = "";
+    } catch (e) {
+        alert("送信失敗: " + e);
+    } finally {
+        sending = false;
+    }
+}
+
+async function setupChat() {
+    // 自分のIDを表示
+    const myId = await invoke("my_id");
+    document.querySelector("#my_id").value = myId;
+
+    // 送信ボタン
+    document.querySelector("#bms_send_btn").addEventListener("click", sendMEssage);
+
+    // Enterで送信、Shift+Enterで改行（日本語変換中のEnterは無視）
+    document.querySelector("#bms_send_message").addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+            e.preventDefault();
+            sendMEssage();
+        }
+    });
+
+    // Rustから "chat-message" イベントが来たら左側に表示
+    await listen("chat-message", (event) => {
+        addMessage(event.payload.text, false);
+        // ヘッダーに送信者IDの先頭8文字を出す
+        document.querySelector("#bms_chat_user_name").
+            textContent = event.payload.from.slice(0, 8);
+    })
+}
