@@ -20,8 +20,14 @@ pub fn run() {
             app.manage(p2p);
             Ok(())
         })
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            logged,
+            p2p::my_id,
+            p2p::send_message
 
-        .invoke_handler(tauri::generate_handler![greet, logged])
+        ])
+
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -46,9 +46,9 @@ struct ChatHandler {
 }
 
 impl ProtocolHandler for ChatHandler {
-    async fn accpet(&self, connection: Connection) -> Result <(), AcceptError> {
+    async fn accept(&self, connection: Connection) -> Result <(), AcceptError> {
         // 送信者のID(irohがカギで認証済み)
-        let from = connection.remote_id().map_err(AcceptError::from_err)?;
+        let from = connection.remote_id();
 
         let (mut send, mut recv) = connection.accept_bi().await?;
 
@@ -57,7 +57,7 @@ impl ProtocolHandler for ChatHandler {
             .read_to_end(64*1024)
             .await
             .map_err(AcceptError::from_err)?;
-        let text = String::from_utf8_lossy(&bytes).to.string();
+        let text = String::from_utf8_lossy(&bytes).to_string();
 
         // 画面(JS)に"chat-message"イベントで知らせる
         let _ = self.app.emit(
