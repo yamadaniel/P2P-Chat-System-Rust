@@ -26,25 +26,7 @@ $(document).ready(function() {//htmlの描画が終わったら、処理を実�
               //タイムライン部分③
         p('<div id="bms_messages">');
 
-            //メッセージ１（左側）
-            p('<div class="bms_message bms_left">');
-                p('<div class="bms_message_box">');
-                    p('<div class="bms_message_content">');
-                        p('<div class="bms_message_text">ほうほうこりゃー便利じゃないか</div>');
-                    p('</div>');
-                p('</div>');
-            p('</div>');
-            p('<div class="bms_clear"></div>');
-
-            //メッセージ２（右側）
-            p('<div class="bms_message bms_right">');
-                p('<div class="bms_message_box">');
-                    p('<div class="bms_message_content">');
-                        p('<div class="bms_message_text">うん、まあまあいけとるな</div>');
-                    p ('</div>');
-                p('</div>');
-            p('</div>');
-            p('<div class="bms_clear"></div>');
+            
         p('</div>');
 
         // テキストボックス、送信ボタン④

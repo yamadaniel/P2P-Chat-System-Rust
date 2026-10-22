@@ -7,6 +7,9 @@ use iroh::{
 use serde::Serialize;
 use tauri::{AppHandle, Emitter, State};
 
+use tauri::Manager;
+use iroh::SecretKey;
+
 // LynQ専用のプロトコル名（送信側と受信側で一致させる）
 pub const ALPN: &[u8] = b"lynq/chat/0";
 
@@ -18,7 +21,44 @@ pub struct P2p {
 
 // 起動時に1回だけ呼ぶ。Endpointを用意して、Routerを待機させる
 pub async fn start(app: AppHandle) -> anyhow::Result<P2p> {
-    // TODO: 今は起動のたびにIDが変わる。後で秘密鍵を保存、読込する形にする
+
+    // 保存先フォルダ: <OSのデータフォルダ>/lynq
+    let dir = app.path().data_dir()?.join("lynq");
+
+    // 環境変数 LYNQ_PROFILE を読む（なければ Err になる）
+    let profile = std::env::var("LYNQ_PROFILE");
+
+    // ファイル名を決める
+    let file_name = match profile {
+        // 設定されていて空でない -> secret-値.key
+        Ok(name) if !name.is_empty() => format!("secret-{}.key", name),
+        // それ以外 -> secret
+        _ => "secret.key".to_string(),
+    };
+    
+    // 鍵ファイル: <OSのデータフォルダ>/lynq/secret.key
+    let key_path = dir.join(&file_name);
+
+    // 秘密鍵が存在するかの真偽判定
+    let is_key_having = key_path.exists();
+
+    let secret_key = if is_key_having {
+        let read_secret_key = std::fs::read(&key_path)?;
+        let bytes: [u8; 32] = read_secret_key
+            .try_into()
+            .map_err(|_| anyhow::anyhow!("鍵ファイルが壊れている（32バイトではない）"))?;
+
+        let key = SecretKey::from_bytes(&bytes);
+        key
+    } else {
+        let key = SecretKey::generate();
+        std::fs::create_dir_all(&dir)?;
+        std::fs::write(&key_path, key.to_bytes())?;
+        key
+    };
+
+    println!("鍵の保存先: {}", key_path.display());
+
     let endpoint = Endpoint::bind(presets::N0).await?;
 
     // Routerに渡すと所有権が移るので、Coneを渡して手元にも残す

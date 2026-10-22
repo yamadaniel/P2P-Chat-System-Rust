@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "p2p-chat-system-rust",
+  "productName": "LynQ",
   "version": "0.1.0",
-  "identifier": "com.atsus.p2p-chat-system-rust",
+  "identifier": "com.yama3394.lynq",
   "build": {
     "frontendDist": "../src"
   },
@@ -10,7 +10,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "p2p-chat-system-rust",
+        "title": "LynQ",
         "width": 800,
         "height": 600
       }
