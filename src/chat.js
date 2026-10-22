@@ -55,6 +55,9 @@ $(document).ready(function() {//htmlの描画が終わったら、処理を実�
 
         //jQueryのappend関数を使って、your_containerの直下にhtml要素を書き加える
         $('#your_container').append(chatDom.join(''));
+
+        // UIができてから送受信の準備をする
+        setupChat();
 });
 
 // ========== P2P送受信 ==========
@@ -75,6 +78,9 @@ function addMessage(text, isMine) {
     const box = document.createElement("div");
     box.className = "bms_message_box";
 
+    const content = document.createElement("div");
+    content.className = "bms_message_content";
+
     const textEl = document.createElement("div");
     textEl.className = "bms_message_text";
     // textContentで入れる（相手の本文をHTMLとして解釈させない）
@@ -84,14 +90,14 @@ function addMessage(text, isMine) {
     box.appendChild(content);
     message.appendChild(box);
     
-    const clear = document.createElement
+    const clear = document.createElement("div");
     clear.className = "bms_clear";
 
     messages.appendChild(message);
     messages.appendChild(clear);
 
     // 一番下までスクロール
-    messages.scrollTop
+    messages.scrollTop = messages.scrollHeight;
 }
 
 // 送信ボタン or Enterで呼ばれる
@@ -100,6 +106,7 @@ async function sendMEssage() {
 
     const textarea = document.querySelector("#bms_send_message");
     const partnerId = document.querySelector("#partner_id").value.trim();
+    const text = textarea.value.trim();
 
     if (!partnerId) {
         alert("相手のIDを入力してください");
