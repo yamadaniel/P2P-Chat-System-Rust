@@ -3,7 +3,7 @@
 /** 
  * id=your_containerに対してチャットUIを組み込む 
  **/
-$(document).ready(function() {//htmlの描画が終わったら、処理を実行する記述
+document.addEventListener("DOMContentLoaded", function() {//htmlの描画が終わったら、処理を実行する記述
 
     //文字列(html要素)を格納できる配列を定義
     var chatDom =[];
@@ -36,8 +36,7 @@ $(document).ready(function() {//htmlの描画が終わったら、処理を実�
         p('</div>');
 
         //jQueryのappend関数を使って、your_containerの直下にhtml要素を書き加える
-        $('#your_container').append(chatDom.join(''));
-
+        document.querySelector('#your_container').insertAdjacentHTML('beforeend',chatDom.join(''));
         // UIができてから送受信の準備をする
         setupChat();
 });

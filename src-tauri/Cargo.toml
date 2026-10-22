@@ -1,8 +1,8 @@
 [package]
-name = "LynQ"
-version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+name = "lynq"
+version = "0.2.0"
+description = "P2P chat app built with Rust, Tauri and iroh"
+authors = ["yama3394 (yamadaniel)"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
