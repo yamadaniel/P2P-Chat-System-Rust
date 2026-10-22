@@ -57,9 +57,13 @@ pub async fn start(app: AppHandle) -> anyhow::Result<P2p> {
         key
     };
 
+    #[cfg(debug_assertions)]
     println!("鍵の保存先: {}", key_path.display());
 
-    let endpoint = Endpoint::bind(presets::N0).await?;
+    let endpoint = Endpoint::builder(presets::N0)
+        .secret_key(secret_key)
+        .bind()
+        .await?;
 
     // Routerに渡すと所有権が移るので、Coneを渡して手元にも残す
     let router = Router::builder(endpoint.clone())

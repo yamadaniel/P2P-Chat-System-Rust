@@ -18,9 +18,10 @@ async fn main() -> anyhow::Result<()> {
 
     // アドレス(NodeID + リレーURL等)を取得
     let addr = endpoint.addr();
-    println!("NodeID: {}", endpoint.id());
-    println!("Addr: {addr:#?}");
-
+    #[cfg(debug_assertions)] {
+        println!("NodeID: {}", endpoint.id());
+        println!("Addr: {addr:#?}");
+    }
     // プロトコルハンドラーを登録してルーターを起動
     let router = Router::builder(endpoint)
         .accept(ALPN.to_vec(), Arc::new(Echo))

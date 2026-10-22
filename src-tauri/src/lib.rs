@@ -31,19 +31,9 @@ pub fn run() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-
-
-pub struct EndpointAddr<TransportAddr> {
-    // pub id: PublicKey,                  // Ed25519公開鍵(NodeID)
-    pub addrs: BTreeSet<TransportAddr>, // 直接アドレス(任意)
-}
-    
+ 
 
 #[tauri::command]
 fn logged() -> String {
     format!("絶対助ける！")
-}
-
-pub fn setup() {
-
 }

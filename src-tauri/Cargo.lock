@@ -3,6 +3,20 @@
 version = 4
 
 [[package]]
+name = "LynQ"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "iroh",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-opener",
+ "tokio",
+]
+
+[[package]]
 name = "adler2"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3540,20 +3554,6 @@ checksum = "9aa2b01e1d916879f73a53d01d1d6cee68adbb31d6d9177a8cfce093cced1d50"
 dependencies = [
  "futures-core",
  "pin-project-lite",
-]
-
-[[package]]
-name = "p2p-chat-system-rust"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "iroh",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "tauri-plugin-opener",
- "tokio",
 ]
 
 [[package]]
