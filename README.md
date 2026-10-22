@@ -1,4 +1,5 @@
-# LynQ P2Pを使用したチャットアプリ
+# LynQ
+P2Pを使用したチャットアプリ
 
 ## バージョン
 0.2.0(Beta)
@@ -51,7 +52,9 @@ PC-AとPC-Bでチャット -> P2P通信でサーバーを介さない
 
 subはmainのDBを複製する。それに伴いsubを読み取り専用にすることでDB統合の手間を省く。
 
-
+## 備考
+windowsで検証済み
+デバッグ時には |cargo tauri dev| で起動可能
 ## 参考文献
 RustP2PChat
 https://github.com/cschladetsch/RustP2PChat
