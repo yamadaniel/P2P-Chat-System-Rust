@@ -3,8 +3,8 @@
     bms_messages_containerの方で、縦横いっぱいに広がってくれるので、
     ここで充てた高さと横幅がそのままスタイルになる仕組み */
 
-    height:900px;/*ここはご自由に*/
-    width: 80%;/*ここはご自由に*/
+    height:1000px;/*ここはご自由に*/
+    width: 100%;/*ここはご自由に*/
 }
 /* チャットの外側部分① */
 #bms_messages_container{
