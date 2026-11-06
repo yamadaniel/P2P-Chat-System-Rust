@@ -43,7 +43,7 @@ PC-BからユーザーIDを検索 -> 中央サーバーでの処理
 
 PC-AとPC-Bでチャット -> P2P通信でサーバーを介さない
 
-オンライン状態の確認は現状Issue#2にある
+オンライン状態の確認は現状(Issue#2)にある
 
 ## 中央サーバーについて
 中央サーバーにおいては1台にまとめると可用性や本番で落ちた場合に問題があるため2台構成にする。
@@ -56,7 +56,7 @@ subはmainのDBを複製する。それに伴いsubを読み取り専用にす�
 windowsで検証済み
 デバッグ時には |cargo tauri dev| で起動可能
 ## 参考文献
-RustP2PChat
+RustP2PChat 
 https://github.com/cschladetsch/RustP2PChat
 
 Rust と Web でつくる軽量デスクトップアプリ：Tauri 完全ガイド
@@ -66,4 +66,3 @@ Rust製P2Pネットワーキングライブラリ「Iroh」を徹底解説する
 https://zenn.dev/nonejp/articles/4f3fa837bcbb96
 
 
-最終更新日 2026/10/22 15:25
