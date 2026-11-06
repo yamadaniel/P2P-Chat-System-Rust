@@ -53,10 +53,15 @@ PC-AとPC-Bでチャット -> P2P通信でサーバーを介さない
 subはmainのDBを複製する。それに伴いsubを読み取り専用にすることでDB統合の手間を省く。
 
 ## 備考
-windowsで検証済み
-デバッグ時には |cargo tauri dev| で起動可能
+Windowsで検証済み
+
+デバッグ時には
+```shell
+cargo tauri dev
+```
+で起動可能
 ## 参考文献
-RustP2PChat 
+RustP2PChat<br>
 https://github.com/cschladetsch/RustP2PChat
 
 Rust と Web でつくる軽量デスクトップアプリ：Tauri 完全ガイド
