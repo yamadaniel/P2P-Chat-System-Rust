@@ -1,0 +1,14 @@
+services:
+  db:
+      image: postgres:17
+      environment:
+        POSTGRES_USER: lynq
+        POSTGRES_PASSWORD: lynq
+        POSTGRES_DB: lynq
+      ports:
+        - "127.0.0.1:5435:5432"
+      volumes:
+        - dev-db:/var/lib/postgresql/data
+
+volumes:
+  dev-db:
